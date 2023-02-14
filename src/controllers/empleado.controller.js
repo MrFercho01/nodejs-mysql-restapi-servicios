@@ -1,10 +1,11 @@
 import { request } from "http";
-import getConnection from "./../database/database.js";
+//import getConnection from "./../database/database.js";
+import { pool } from "./../database/database.js";
 
 const getEmpleados = async (req, res) => {
     try{
-        const connection = await getConnection();
-        const result =  await connection.query('select * from Empleados');
+        //const connection = await getConnection();
+        const result =  await pool.query('select * from Empleados');
 
         res.json(result);
     }catch(error){
@@ -17,9 +18,9 @@ const getEmpleado = async (req, res) => {
     try{
         console.log(req.params);
         const { id } = req.params;
-        const connection = await getConnection();
-        const result = await connection.query('select * from Empleados where id = ?', id);
-        //console.log(result);
+        //const connection = await getConnection();
+        const result = await pool.query('select * from Empleados where id = ?', id);
+        
         res.json(result);
     }catch(error){
         res.status(500);
@@ -40,9 +41,9 @@ const addEmpleado = async (req, res) => {
             res.status(400).json({ message: "Bad Request. Please fill all field" });
         }
 
-        const connection = await getConnection();
+        //const connection = await getConnection();
 
-        await connection.query("insert into Empleados set ?", Empleado);
+        await pool.query("insert into Empleados set ?", Empleado);
 
         res.json({ message: "Employee Added" });
     } catch (error) {
@@ -61,10 +62,10 @@ const updateEmpleado = async (req, res) => {
             res.status(400).json({ message: "Bad Request. Please fill all field" });
         }
         const Empleado = { Identificacion, Nombres, Cargo, Area };
-        const connection = await getConnection();
-        const result = await connection.query('update Empleados set ? where id = ?', [Empleado, id]);
+        //const connection = await getConnection();
+        const result = await pool.query('update Empleados set ? where id = ?', [Empleado, id]);
         
-        const [resultado] = await connection.query('select * from Empleados where id = ?', id);
+        const [resultado] = await pool.query('select * from Empleados where id = ?', id);
         
         res.json(resultado);
     }catch(error){
@@ -77,8 +78,8 @@ const deleteEmpleado = async (req, res) => {
     try{
         console.log(req.params);
         const { id } = req.params;
-        const connection = await getConnection();
-        const result = await connection.query('delete from Empleados where id = ?', id);
+        //const connection = await getConnection();
+        const result = await pool.query('delete from Empleados where id = ?', id);
 
         res.json(result);
     }catch(error){

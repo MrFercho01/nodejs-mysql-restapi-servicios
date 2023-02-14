@@ -1,9 +1,10 @@
-import getConnection from "./../database/database.js";
+//import getConnection from "./../database/database.js";
+import { pool } from "./../database/database.js";
 
 const getMesas = async (req, res) => {
     try{
-        const connection = await getConnection();
-        const result = await connection.query('select * from Mesas');
+        //const connection = await getConnection();
+        const result = await pool.query('select * from Mesas');
         
         res.json(result);
     }catch(error){
@@ -16,8 +17,8 @@ const getMesa = async (req, res) => {
     try{
         console.log(req.params);
         const { id } = req.params;
-        const connection = await getConnection();
-        const result = await connection.query('select * from Mesas where id = ?', id);
+        //const connection = await getConnection();
+        const result = await pool.query('select * from Mesas where id = ?', id);
         
         res.json(result);
     }catch(error){
@@ -39,9 +40,9 @@ const addMesa = async (req, res) => {
             res.status(400).json({ message: "Bad Request. Please fill all field" });
         }
 
-        const connection = await getConnection();
+        //const connection = await getConnection();
 
-        await connection.query("insert into Mesas set ?", mesa);
+        await pool.query("insert into Mesas set ?", mesa);
 
         res.json({ message: "Table Added" });
     } catch (error) {
@@ -60,10 +61,10 @@ const updateMesa = async (req, res) => {
             res.status(400).json({ message: "Bad Request. Please fill all field" });
         }
         const mesa = { descripcion, id_ubicacion };
-        const connection = await getConnection();
-        const result = await connection.query('update Mesas set ? where id = ?', [mesa, id]);
+        //const connection = await getConnection();
+        const result = await pool.query('update Mesas set ? where id = ?', [mesa, id]);
 
-        const [resultado] = await connection.query('select * from Mesas where id = ?', id);
+        const [resultado] = await pool.query('select * from Mesas where id = ?', id);
         
         res.json(resultado);
     }catch(error){
@@ -76,8 +77,8 @@ const deleteMesa = async (req, res) => {
     try{
         console.log(req.params);
         const { id } = req.params;
-        const connection = await getConnection();
-        const result = await connection.query('delete from Mesas where id = ?', id);
+        //const connection = await getConnection();
+        const result = await pool.query('delete from Mesas where id = ?', id);
         
         res.json(result);
     }catch(error){

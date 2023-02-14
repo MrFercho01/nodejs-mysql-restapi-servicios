@@ -19,7 +19,7 @@ app.use("/api/empleados", empleadosRoutes);
 app.use("/api/ubicaciones", ubicacionesRoutes);
 app.use("/api/mesas", mesasRoutes);
 
-app.use((req, res) => {
+app.use((req, res, next ) => {
     res.status(404).json({
         message: 'endpoint not found'
     })

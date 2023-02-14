@@ -1,9 +1,10 @@
-import { getConnection } from "./../database/database.js";
+//import getConnection from "./../database/database.js";
+import { pool } from "./../database/database.js";
 
 const getUbicaciones = async (req, res) => {
     try{
-        const connection = await getConnection();
-        const result = await connection.query('select * from Ubicaciones');
+        //const connection = await getConnection();
+        const result = await pool.query('select * from Ubicaciones');
         
         res.json(result);
     }catch(error){
@@ -16,8 +17,8 @@ const getUbicacion = async (req, res) => {
     try{
         console.log(req.params);
         const { id } = req.params;
-        const connection = await getConnection();
-        const result = await connection.query('select * from Ubicaciones where id_ubicacion = ?', id);
+        //const connection = await getConnection();
+        const result = await pool.query('select * from Ubicaciones where id_ubicacion = ?', id);
         //console.log(result);
         res.json(result);
     }catch(error){
@@ -60,10 +61,10 @@ const updateUbicacion = async (req, res) => {
             res.status(400).json({ message: "Bad Request. Please fill all field" });
         }
         const ubicacion = { descripcion };
-        const connection = await getConnection();
-        const result = await connection.query('update Ubicaciones set ? where id_ubicacion = ?', [ubicacion, id_ubicacion]);
+        //const connection = await getConnection();
+        const result = await pool.query('update Ubicaciones set ? where id_ubicacion = ?', [ubicacion, id_ubicacion]);
         
-        const [resultado] = await connection.query('select * from Ubicaciones where id_ubicacion = ?', id_ubicacion);
+        const [resultado] = await pool.query('select * from Ubicaciones where id_ubicacion = ?', id_ubicacion);
         
         res.json(resultado);
     }catch(error){
@@ -76,8 +77,8 @@ const deleteUbicacion = async (req, res) => {
     try{
         console.log(req.params);
         const { id_ubicacion } = req.params;
-        const connection = await getConnection();
-        const result = await connection.query('delete from Ubicaciones where id_ubicacion = ?', id_ubicacion);
+        //const connection = await getConnection();
+        const result = await pool.query('delete from Ubicaciones where id_ubicacion = ?', id_ubicacion);
         
         res.json(result);
     }catch(error){
