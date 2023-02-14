@@ -8,7 +8,7 @@ import mesasRoutes from "./routes/mesas.routes.js";
  const app = express();
 
 //Settings
-app.set("port", 4000);
+//app.set("port", 4000);
 
 //Middleware
 app.use(morgan("dev"));

@@ -10,6 +10,7 @@ export default {
     password: process.env.PASSWORD || ""
 }*/
 
+export const PORT = process.env.PORT || 4000
 export const DB_HOST = process.env.DB_HOST || ""
 export const DB_DATABASE = process.env.DB_DATABASE || ""
 export const DB_USER = process.env.DB_USER || ""
