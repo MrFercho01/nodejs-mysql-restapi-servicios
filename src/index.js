@@ -1,5 +1,4 @@
 import app from "./app";
-import "./config.js";
 
 const main=()=>{
     app.listen(app.get("port"))
