@@ -1,5 +1,5 @@
 import { request } from "http";
-import { getConnection } from "./../database/database";
+import getConnection from "./../database/database.js";
 
 const getEmpleados = async (req, res) => {
     try{
@@ -79,7 +79,7 @@ const deleteEmpleado = async (req, res) => {
         const { id } = req.params;
         const connection = await getConnection();
         const result = await connection.query('delete from Empleados where id = ?', id);
-        //console.log(result);
+
         res.json(result);
     }catch(error){
         res.status(500);

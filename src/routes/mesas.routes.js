@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { methods as mesaController } from "../controllers/mesa.controller";
+import { methods as mesaController } from "../controllers/mesa.controller.js";
 
 const router = Router();
 

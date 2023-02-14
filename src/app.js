@@ -1,9 +1,9 @@
 import express from "express";
 import morgan from "morgan";
 //Routes
-import empleadosRoutes from "./routes/empleados.routes";
-import ubicacionesRoutes from "./routes/ubicaciones.routes";
-import mesasRoutes from "./routes/mesas.routes";
+import empleadosRoutes from "./routes/empleados.routes.js";
+import ubicacionesRoutes from "./routes/ubicaciones.routes.js";
+import mesasRoutes from "./routes/mesas.routes.js";
 
  const app = express();
 

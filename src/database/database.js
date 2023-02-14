@@ -5,7 +5,7 @@ import {
     DB_USER,
     DB_PASSWORD,
     DB_PORT
-} from '../config';
+} from '../config.js';
 
 const connection = mysql.createConnection({
     host: DB_HOST,
@@ -15,10 +15,12 @@ const connection = mysql.createConnection({
     port: DB_PORT
 });
 
-const getConnection=()=>{
+export const getConnection = () => {
     return connection;
 };
 
-module.exports = {
-    getConnection
-};
+export default () => {
+    return connection;;
+  };
+
+//module.exports = getConnection;

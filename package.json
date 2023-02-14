@@ -2,6 +2,7 @@
   "name": "restapi-nodejs-express-mysql",
   "version": "1.0.0",
   "description": "API de Servicios",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "babel-node": "babel-node --presets=@babel/preset-env",
