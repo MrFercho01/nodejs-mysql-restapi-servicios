@@ -4,8 +4,8 @@ import getConnection from "./../database/database.js";
 const getEmpleados = async (req, res) => {
     try{
         const connection = await getConnection();
-        const result = await connection.query('select * from Empleados');
-        //console.log(result);
+        const result =  await connection.query('select * from Empleados');
+
         res.json(result);
     }catch(error){
         res.status(500);

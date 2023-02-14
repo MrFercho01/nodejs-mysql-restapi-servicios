@@ -1,4 +1,6 @@
 import mysql from "promise-mysql";
+//import mysql from "mysql";
+
 import {
     DB_HOST,
     DB_DATABASE,
