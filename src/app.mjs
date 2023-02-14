@@ -4,7 +4,6 @@ import morgan from "morgan";
 import empleadosRoutes from "./routes/empleados.routes";
 import ubicacionesRoutes from "./routes/ubicaciones.routes";
 import mesasRoutes from "./routes/mesas.routes";
-import { nextTick } from "process";
 
  const app = express();
 
@@ -20,7 +19,7 @@ app.use("/api/empleados", empleadosRoutes);
 app.use("/api/ubicaciones", ubicacionesRoutes);
 app.use("/api/mesas", mesasRoutes);
 
-app.use((req, res, next) => {
+app.use((req, res) => {
     res.status(404).json({
         message: 'endpoint not found'
     })
