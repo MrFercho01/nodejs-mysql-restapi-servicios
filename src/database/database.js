@@ -25,12 +25,12 @@ export const pool = createPool({
     port: DB_PORT
 });
 
-export const getConnection = () => {
+/*export const getConnection = () => {
     return connection;
 };
 
 export default () => {
     return connection;;
-  };
+  };*/
 
 //module.exports = getConnection;
