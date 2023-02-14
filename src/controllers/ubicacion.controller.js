@@ -4,7 +4,7 @@ import { pool } from "./../database/database.js";
 const getUbicaciones = async (req, res) => {
     try{
         //const connection = await getConnection();
-        const result = await pool.query('select * from Ubicaciones');
+        const [result] = await pool.query('select * from Ubicaciones');
         
         res.json(result);
     }catch(error){
@@ -18,8 +18,8 @@ const getUbicacion = async (req, res) => {
         console.log(req.params);
         const { id } = req.params;
         //const connection = await getConnection();
-        const result = await pool.query('select * from Ubicaciones where id_ubicacion = ?', id);
-        //console.log(result);
+        const [result] = await pool.query('select * from Ubicaciones where id_ubicacion = ?', id);
+        
         res.json(result);
     }catch(error){
         res.status(500);

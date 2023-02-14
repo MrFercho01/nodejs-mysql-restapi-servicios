@@ -5,7 +5,7 @@ import { pool } from "./../database/database.js";
 const getEmpleados = async (req, res) => {
     try{
         //const connection = await getConnection();
-        const result =  await pool.query('select * from Empleados');
+        const [result] =  await pool.query('select * from Empleados');
 
         res.json(result);
     }catch(error){
@@ -19,7 +19,7 @@ const getEmpleado = async (req, res) => {
         console.log(req.params);
         const { id } = req.params;
         //const connection = await getConnection();
-        const result = await pool.query('select * from Empleados where id = ?', id);
+        const [result] = await pool.query('select * from Empleados where id = ?', id);
         
         res.json(result);
     }catch(error){
