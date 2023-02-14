@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "API de Servicios",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "babel-node": "babel-node --presets=@babel/preset-env",
     "dev": "nodemon --exec npm run babel-node src/index.js",
-    "start": "node src/index.js"
+    "start": "node ./src/index.js"
   },
   "keywords": [],
   "author": "",
