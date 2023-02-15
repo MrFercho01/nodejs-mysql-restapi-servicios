@@ -14,6 +14,13 @@ import mesasRoutes from "./routes/mesas.routes.js";
 app.use(morgan("dev"));
 app.use(express.json());
 
+// Enable CORS for all requests
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 //Routes
 app.use("/api/empleados", empleadosRoutes);
 app.use("/api/ubicaciones", ubicacionesRoutes);
