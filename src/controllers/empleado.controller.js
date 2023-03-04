@@ -30,14 +30,14 @@ const getEmpleado = async (req, res) => {
 
 const addEmpleado = async (req, res) => {
     try{
-        const { Identificacion, Nombres, Cargo, Area } = req.body[0];
+        const { Identificacion, Nombres, Cargo, Area, FechaIngreso, UsuarioIngreso, Estado } = req.body[0];
 
         console.log(req.body);
         console.log(Identificacion);
         
-        const Empleado = { Identificacion, Nombres, Cargo, Area };
+        const Empleado = { Identificacion, Nombres, Cargo, Area, FechaIngreso, UsuarioIngreso, Estado };
 
-        if (Identificacion === undefined || Nombres === undefined || Cargo === undefined || Area === undefined){
+        if (Identificacion === undefined || Nombres === undefined || Cargo === undefined || Area === undefined || FechaIngreso === undefined || UsuarioIngreso === undefined || Estado === undefined){
             res.status(400).json({ message: "Bad Request. Please fill all field" });
         }
 
@@ -56,12 +56,12 @@ const updateEmpleado = async (req, res) => {
     try{
         console.log(req.params);        
         const { id } = req.params;
-        const { Identificacion, Nombres, Cargo, Area } = req.body[0];
+        const { Identificacion, Nombres, Cargo, Area, FechaModifica, UsuarioModifica, Estado } = req.body[0];
         console.log(req.body[0]);
-        if ( id === undefined || Identificacion === undefined || Nombres === undefined || Cargo === undefined || Area === undefined){
+        if ( id === undefined || Identificacion === undefined || Nombres === undefined || Cargo === undefined || Area === undefined || FechaModifica === undefined || UsuarioModifica === undefined || Estado === undefined){
             res.status(400).json({ message: "Bad Request. Please fill all field" });
         }
-        const Empleado = { Identificacion, Nombres, Cargo, Area };
+        const Empleado = { Identificacion, Nombres, Cargo, Area, FechaModifica, UsuarioModifica, Estado };
         //const connection = await getConnection();
         const result = await pool.query('update Empleados set ? where id = ?', [Empleado, id]);
         
